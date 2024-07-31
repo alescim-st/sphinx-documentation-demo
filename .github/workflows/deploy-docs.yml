@@ -74,7 +74,6 @@ jobs:
       # Step 9: Deploy to Azure Storage
       - name: Deploy to Azure Storage
         run: |
-          az storage account show -n ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} --query networkRuleSet
           az storage blob upload-batch -d '$web' --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} -s _build --auth-mode login
 
 #      # If you want to avoid configuring network access directly, another approach is to use 

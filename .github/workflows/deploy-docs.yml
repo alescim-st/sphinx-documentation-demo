@@ -22,37 +22,48 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deploy-to-github-pages.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      # Step 1: Checkout the repository
+      - name: Checkout repository
         uses: actions/checkout@v4
         
-      - uses: actions/setup-python@v5
+      # Step 2: Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-      - name: Install dependencies
+          
+      # Step 3: Install Sphinx and dependencies
+      - name: Install Sphinx and dependencies
         run: |
           pip install sphinx pydata-sphinx-theme sphinx-design sphinx-copybutton sphinx-autoapi
-      - name: Sphinx build
+          
+      # Step 4: Build Sphinx documentation
+      - name: Build Sphinx documentation
         run: |
           sphinx-build docs _build
-        
-      - name: Setup Pages
+          
+      # Step 5: Set up GitHub Pages
+      - name: Set up GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Upload artifact
+        
+      # Step 6: Upload artifact to GitHub Pages
+      - name: Upload artifact to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
           path: '_build/'
+          
+      # Step 7: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        id: deployment
+        id: deploy-to-github-pages
         uses: actions/deploy-pages@v4
 
+      # Step 8: Authenticate to Azure
       - name: Authenticate to Azure
         uses: azure/login@v1
         with:
@@ -60,6 +71,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           allow-no-subscriptions: true
   
+      # Step 9: Deploy to Azure Storage
       - name: Deploy to Azure Storage
         run: |
           az storage blob upload-batch -d '$web' --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} -s _build --auth-mode login

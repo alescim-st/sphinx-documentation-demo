@@ -52,3 +52,13 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Authenticate to Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+  
+      - name: Deploy to Azure Storage
+        run: |
+          az storage blob upload-batch -d '$web' --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} -s _build/html

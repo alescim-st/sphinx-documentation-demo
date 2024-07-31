@@ -1,0 +1,40 @@
+
+/* Add horizontal ruler below Header level 1 */
+h1
+{
+    border-bottom:3px solid #CCC;
+    padding-bottom:3px;
+}
+
+/* Add horizontal ruler below Header level 2 */
+h2
+{
+    border-bottom:3px solid #CCC;
+    padding-bottom:3px;
+}
+
+/* Stretch central panel to fit to maximum width */
+
+.bd-main .bd-content .bd-article-container {
+    max-width: 100%;  /* default is 60em */
+  }
+
+/* Shrinks the left sidebar so it takes up less space */
+.bd-sidebar-primary {
+    width: 20%
+
+}
+
+/* Change link colors to blue, among other things */
+html[data-theme="light"] {
+    --pst-color-primary: blue;
+}
+
+html[data-theme="dark"] {
+    --pst-color-primary: rgb(0, 174, 255);
+}
+
+/* The default font size is fairly small, so this increases it */
+body {
+    font-size: 1.3em
+}

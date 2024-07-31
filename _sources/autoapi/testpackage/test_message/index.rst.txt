@@ -1,0 +1,41 @@
+testpackage.test_message
+========================
+
+.. py:module:: testpackage.test_message
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   testpackage.test_message.TestMessage
+
+
+Module Contents
+---------------
+
+.. py:class:: TestMessage(message_string)
+
+   Bases: :py:obj:`object`
+
+
+   This is the docstring for the TestMessage class.
+
+   :param message_string: String to be printed later
+   :type message_string: string
+
+
+   .. py:attribute:: message_string
+
+
+   .. py:method:: from_number(number)
+      :staticmethod:
+
+
+      Creates a TestMessage from the provided number.
+
+      :param number: the number to convert into a string
+
+
+

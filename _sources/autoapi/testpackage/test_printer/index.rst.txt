@@ -1,0 +1,52 @@
+testpackage.test_printer
+========================
+
+.. py:module:: testpackage.test_printer
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   testpackage.test_printer.TestPrinter
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   testpackage.test_printer.function_within_package
+
+
+Module Contents
+---------------
+
+.. py:class:: TestPrinter(msg)
+
+   Bases: :py:obj:`object`
+
+
+   This is the docstring for TestPrinter
+   Stuff
+
+   :param msg: Message to be stored for later printing
+
+
+   .. py:attribute:: msg
+
+
+   .. py:method:: print()
+
+      This function is used to print the stored message.
+
+
+
+
+.. py:function:: function_within_package()
+
+   This is just an example of a function within a package
+   that is not also contained within a class.
+
+

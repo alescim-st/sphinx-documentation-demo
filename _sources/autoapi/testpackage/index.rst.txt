@@ -1,0 +1,16 @@
+testpackage
+===========
+
+.. py:module:: testpackage
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/testpackage/test_message/index
+   /autoapi/testpackage/test_printer/index
+
+

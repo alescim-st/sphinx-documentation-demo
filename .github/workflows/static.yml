@@ -1,5 +1,5 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy sphinx-documentation-demo to Pages and Azure
+# GitHub Actions workflow for deploying Sphinx documentation to GitHub Pages and Azure Storage
+name: Deploy Sphinx documentation to GitHub Pages and Azure Storage
 
 on:
   # Runs on pushes targeting the default branch
@@ -62,4 +62,4 @@ jobs:
   
       - name: Deploy to Azure Storage
         run: |
-          az storage blob upload-batch -d '$web' --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} -s _build/html
+          az storage blob upload-batch -d '$web' --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} -s _build
